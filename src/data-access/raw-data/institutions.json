@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Harvard University",
+    "address": "P.O. Box 114, 6922 Volutpat. Ave",
+    "country": "United States",
+    "region": "Middlesex, Cambridge, Massachusetts",
+    "id": "EA8BBED7-4106-94AF-48DD-A1414E386AFB"
+  },
+  {
+    "name": "Massachusetts Institute of Technology",
+    "address": "380-7690 Sem Rd.",
+    "country": "United States",
+    "region": "Middlesex, Cambridge, Massachusetts",
+    "id": "DEA4606B-4A21-D497-40E9-A5FB7589B536"
+  },
+  {
+    "name": "Stanford University",
+    "address": "P.O. Box 550, 4768 Consequat Street",
+    "country": "United States",
+    "region": "Stanford, Santa Clara, California",
+    "id": "8C8A804F-7A43-5840-4296-8A0117325921"
+  },
+  {
+    "name": "Princeton University",
+    "address": "1st Ave.",
+    "country": "United States",
+    "region": "Princeton, Mercer, New Jersey",
+    "id": "8C8A804F-7A43-5840-4296-8A01173212112"
+  },
+  {
+    "name": "New York University",
+    "address": "2nd Ave.",
+    "country": "United States",
+    "region": "New York City, New York City, New York",
+    "id": "8C8A804F-7A43-5840-4296-8A01173212254"
+  }
+]

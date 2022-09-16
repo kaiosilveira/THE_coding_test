@@ -1,0 +1,17 @@
+import { Request, Response } from 'express';
+import SubmissionService from '../../../../application/services/submissions';
+
+export default class SubmissionsController {
+  submissionService: SubmissionService;
+
+  constructor({ submissionService }) {
+    this.submissionService = submissionService;
+
+    this.listByInstitutionId = this.listByInstitutionId.bind(this);
+  }
+
+  async listByInstitutionId(req: Request, res: Response) {
+    const result = await this.submissionService.fetchByInstitutionId(req.params.institutionId);
+    return res.json(result);
+  }
+}

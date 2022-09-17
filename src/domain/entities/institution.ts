@@ -1,9 +1,12 @@
+import CovidReport from './covid-report';
+
 export class InstitutionImpl {
   name: string;
   address: string;
   country: string;
   region: string;
   id: string;
+  covidReport?: CovidReport;
 
   constructor({ name, address, country, region, id }) {
     this.id = id;

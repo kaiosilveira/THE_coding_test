@@ -3,7 +3,7 @@ import InstitutionsRepository from '../../../../data-access/repositories/institu
 import Institution from '../../../../domain/entities/institution';
 
 export default class InstitutionServiceImpl implements InstitutionService {
-  institutionsRepository: InstitutionsRepository;
+  private readonly institutionsRepository: InstitutionsRepository;
 
   constructor({ institutionsRepository }) {
     this.institutionsRepository = institutionsRepository;

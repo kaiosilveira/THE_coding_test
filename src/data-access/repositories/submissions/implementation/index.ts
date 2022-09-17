@@ -3,7 +3,7 @@ import Submission, { SubmissionImpl } from '../../../../domain/entities/submissi
 import SubmissionSubject from '../../../../domain/value-objects/submission-subject';
 
 export default class SubmissionsRepositoryImpl implements SubmissionsRepository {
-  _data: Array<Submission>;
+  private readonly _data: Array<Submission>;
 
   constructor({ rawData }) {
     this._data = rawData.map(s => {

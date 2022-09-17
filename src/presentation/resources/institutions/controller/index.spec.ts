@@ -1,16 +1,9 @@
 import { Request, Response } from 'express';
 
 import InstitutionsController from '.';
-import InstitutionService from '../../../../application/services/institutions';
+import FakeInstitutionService from '../../../../application/services/institutions/fake';
 import Institution from '../../../../domain/entities/institution';
-import institution from '../../../../domain/entities/institution';
 import FakeExpressResponse from '../../../../_test/fakes/express/response';
-
-class FakeInstitutionService implements InstitutionService {
-  list(): Promise<institution[]> {
-    throw new Error('Method not implemented.');
-  }
-}
 
 describe('InstitutionsController', () => {
   describe('fetchInstitutions', () => {

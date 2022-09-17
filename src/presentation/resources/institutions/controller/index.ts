@@ -4,7 +4,7 @@ import InstitutionService from '../../../../application/services/institutions';
 export type InstitutionsControllerProps = { institutionsService: InstitutionService };
 
 export default class InstitutionsController {
-  institutionsService: InstitutionService;
+  private readonly institutionsService: InstitutionService;
 
   constructor({ institutionsService }: InstitutionsControllerProps) {
     this.institutionsService = institutionsService;
@@ -12,7 +12,11 @@ export default class InstitutionsController {
   }
 
   async fetchInstitutions(_: Request, res: Response) {
-    const result = await this.institutionsService.list();
-    return res.json(result);
+    try {
+      const result = await this.institutionsService.list();
+      return res.json(result);
+    } catch (ex) {
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
   }
 }

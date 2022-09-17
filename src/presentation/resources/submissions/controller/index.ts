@@ -6,12 +6,15 @@ export default class SubmissionsController {
 
   constructor({ submissionService }) {
     this.submissionService = submissionService;
-
     this.listByInstitutionId = this.listByInstitutionId.bind(this);
   }
 
   async listByInstitutionId(req: Request, res: Response) {
-    const result = await this.submissionService.fetchByInstitutionId(req.params.institutionId);
-    return res.json(result);
+    try {
+      const result = await this.submissionService.fetchByInstitutionId(req.params.institutionId);
+      return res.json(result);
+    } catch (ex) {
+      return res.status(500).json({ msg: 'Internal server error' });
+    }
   }
 }

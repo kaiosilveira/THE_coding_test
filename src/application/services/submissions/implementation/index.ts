@@ -3,7 +3,7 @@ import SubmissionsRepository from '../../../../data-access/repositories/submissi
 import Submission from '../../../../domain/entities/submission';
 
 export default class SubmissionServiceImpl implements SubmissionService {
-  submissionsRepository: SubmissionsRepository;
+  private readonly submissionsRepository: SubmissionsRepository;
 
   constructor({ submissionsRepository }) {
     this.submissionsRepository = submissionsRepository;
@@ -11,7 +11,6 @@ export default class SubmissionServiceImpl implements SubmissionService {
   }
 
   async fetchByInstitutionId(institutionId: string): Promise<Submission[]> {
-    const submissions = await this.submissionsRepository.list();
-    return submissions.filter(s => s.institutionId === institutionId);
+    return await this.submissionsRepository.where(s => s.institutionId === institutionId);
   }
 }

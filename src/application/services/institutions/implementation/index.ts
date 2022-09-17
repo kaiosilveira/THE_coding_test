@@ -11,8 +11,15 @@ export default class InstitutionServiceImpl implements InstitutionService {
   constructor({ institutionsRepository, covidReportsRepository }) {
     this.institutionsRepository = institutionsRepository;
     this.covidReportsRepository = covidReportsRepository;
+
     this.list = this.list.bind(this);
+    this.exists = this.exists.bind(this);
     this.fetchCovidReport = this.fetchCovidReport.bind(this);
+  }
+
+  async exists({ institutionId }: { institutionId: string }): Promise<boolean> {
+    const allInstitutions = await this.institutionsRepository.list();
+    return allInstitutions.some(i => i.id === institutionId);
   }
 
   async list(): Promise<Institution[]> {

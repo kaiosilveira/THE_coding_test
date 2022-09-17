@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import SubmissionService from '../../../../application/services/submissions';
 
 export default class SubmissionsController {
-  submissionService: SubmissionService;
+  private readonly submissionService: SubmissionService;
 
   constructor({ submissionService }) {
     this.submissionService = submissionService;

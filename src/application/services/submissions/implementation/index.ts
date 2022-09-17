@@ -2,10 +2,11 @@ import SubmissionService from '..';
 import SubmissionsRepository from '../../../../data-access/repositories/submissions';
 import Submission from '../../../../domain/entities/submission';
 
+export type SubmissionServiceProps = { submissionsRepository: SubmissionsRepository };
 export default class SubmissionServiceImpl implements SubmissionService {
   private readonly submissionsRepository: SubmissionsRepository;
 
-  constructor({ submissionsRepository }) {
+  constructor({ submissionsRepository }: SubmissionServiceProps) {
     this.submissionsRepository = submissionsRepository;
     this.fetchByInstitutionId = this.fetchByInstitutionId.bind(this);
   }

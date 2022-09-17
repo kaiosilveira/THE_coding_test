@@ -23,10 +23,12 @@ export default class PresentationResourcesManager {
       }),
     });
 
-    mainRouter.route('/institutions').get(institutionsCtrl.fetchInstitutions);
-    mainRouter
-      .route('/institutions/:institutionId/submissions')
-      .get(submissionsCtrl.listByInstitutionId);
+    mainRouter.get('/institutions', institutionsCtrl.fetchInstitutions);
+    mainRouter.get('/institutions/:institutionId/submissions', submissionsCtrl.listByInstitutionId);
+    mainRouter.get(
+      '/institutions/:institutionId/covid-report',
+      institutionsCtrl.fetchCovidReportByInstitutionId
+    );
 
     return mainRouter;
   }

@@ -9,6 +9,7 @@ export default class InstitutionsController {
   constructor({ institutionsService }: InstitutionsControllerProps) {
     this.institutionsService = institutionsService;
     this.fetchInstitutions = this.fetchInstitutions.bind(this);
+    this.fetchCovidReportByInstitutionId = this.fetchCovidReportByInstitutionId.bind(this);
   }
 
   async fetchInstitutions(_: Request, res: Response) {
@@ -18,5 +19,20 @@ export default class InstitutionsController {
     } catch (ex) {
       return res.status(500).json({ msg: 'Internal server error' });
     }
+  }
+
+  async fetchCovidReportByInstitutionId(req: Request, res: Response) {
+    const institutionId = req.params.institutionId;
+    if (institutionId === 'undefined') {
+      return res.status(400).json({ msg: 'Invalid institution identifier' });
+    }
+
+    const institutionExists = await this.institutionsService.exists({ institutionId });
+    if (!institutionExists) {
+      return res.status(400).json({ msg: 'Institution not found' });
+    }
+
+    const report = await this.institutionsService.fetchCovidReport({ institutionId });
+    return res.json(report);
   }
 }

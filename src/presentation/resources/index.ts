@@ -1,5 +1,6 @@
 import InstitutionServiceImpl from '../../application/services/institutions/implementation';
 import SubmissionServiceImpl from '../../application/services/submissions/implementation';
+import CovidReportsRepositoryImpl from '../../data-access/repositories/covid/implementation';
 import InstitutionsRepositoryImpl from '../../data-access/repositories/institutions/implementation';
 import SubmissionsRepositoryImpl from '../../data-access/repositories/submissions/implementation';
 import InstitutionsController from './institutions/controller';
@@ -12,6 +13,7 @@ export default class PresentationResourcesManager {
     const institutionsCtrl = new InstitutionsController({
       institutionsService: new InstitutionServiceImpl({
         institutionsRepository: new InstitutionsRepositoryImpl({ rawData: data.institutions }),
+        covidReportsRepository: new CovidReportsRepositoryImpl({ rawData: data.covidCases }),
       }),
     });
 
